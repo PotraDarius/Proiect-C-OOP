@@ -1,0 +1,26 @@
+        -:    0:Source:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/main.c
+        -:    0:Graph:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/cmake-build-debug-coverage/CMakeFiles/tema_lab2.dir/main.c.gcno
+        -:    0:Data:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/cmake-build-debug-coverage/CMakeFiles/tema_lab2.dir/main.c.gcda
+        -:    0:Runs:1
+        -:    1:#include "domain.h"
+        -:    2:#include "repository.h"
+        -:    3:#include "validator.h"
+        -:    4:#include "service.h"
+        -:    5:#include "UI.h"
+        -:    6:
+        -:    7:
+function main called 1 returned 100% blocks executed 100%
+        1:    8:int main(){
+        1:    9:    teste_domain();
+        1:    9-block  0
+call    0 returned 1
+        1:   10:    teste_repository();
+call    0 returned 1
+        1:   11:    teste_validator();
+call    0 returned 1
+        1:   12:    teste_service();
+call    0 returned 1
+        1:   13:    run();
+call    0 returned 1
+        1:   14:    return 0;
+        -:   15:}

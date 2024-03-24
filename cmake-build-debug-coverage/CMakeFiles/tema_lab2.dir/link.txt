@@ -1,0 +1,1 @@
+/usr/bin/cc --coverage -g CMakeFiles/tema_lab2.dir/main.c.o CMakeFiles/tema_lab2.dir/domain.c.o CMakeFiles/tema_lab2.dir/repository.c.o CMakeFiles/tema_lab2.dir/validator.c.o CMakeFiles/tema_lab2.dir/service.c.o CMakeFiles/tema_lab2.dir/UI.c.o -o tema_lab2 

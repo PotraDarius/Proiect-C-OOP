@@ -1,0 +1,285 @@
+        -:    0:Source:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/validator.c
+        -:    0:Graph:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/cmake-build-debug-coverage/CMakeFiles/tema_lab2.dir/validator.c.gcno
+        -:    0:Data:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/cmake-build-debug-coverage/CMakeFiles/tema_lab2.dir/validator.c.gcda
+        -:    0:Runs:1
+        -:    1:#include "validator.h"
+        -:    2:#include "domain.h"
+        -:    3:#include "string.h"
+        -:    4:#include "assert.h"
+        -:    5:#include "stdlib.h"
+        -:    6:
+        -:    7:
+function validare_data called 24 returned 100% blocks executed 100%
+       24:    8:Validator validare_data(data data1){
+       24:    9:    if(data1.zi <=0 || data1.zi > 31){
+       24:    9-block  0
+branch  0 taken 23 (fallthrough)
+branch  1 taken 1
+       23:    9-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 22
+        2:   10:        return 1;
+        2:   10-block  0
+        -:   11:    }
+       22:   12:    if(data1.luna <=0 || data1.luna > 12){
+       22:   12-block  0
+branch  0 taken 20 (fallthrough)
+branch  1 taken 2
+       20:   12-block  1
+branch  2 taken 1 (fallthrough)
+branch  3 taken 19
+        3:   13:        return 1;
+        3:   13-block  0
+        -:   14:    }
+       19:   15:    if(data1.an <=0){
+       19:   15-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 18
+        1:   16:        return 1;
+        1:   16-block  0
+        -:   17:    }
+        -:   18:
+        -:   19:
+       18:   20:    return 0;
+       18:   20-block  0
+        -:   21:}
+        -:   22:
+function validare_oferta called 23 returned 100% blocks executed 100%
+       23:   23:Validator validare_oferta(oferta oferta1){
+       23:   24:    if(strcmp(oferta1.tip, "") == 0|| (strcmp(oferta1.tip, "Mare") != 0 && strcmp(oferta1.tip, "Munte") != 0
+       23:   24-block  0
+branch  0 taken 22 (fallthrough)
+branch  1 taken 1
+       22:   24-block  1
+branch  2 taken 19 (fallthrough)
+branch  3 taken 3
+       19:   24-block  2
+branch  4 taken 3 (fallthrough)
+branch  5 taken 16
+        3:   25:                                       && strcmp(oferta1.tip, "City Break") != 0)){
+        3:   25-block  0
+branch  0 taken 3 (fallthrough)
+branch  1 taken 0
+        4:   26:        return 2;
+        4:   26-block  0
+        -:   27:    }
+       19:   28:    if(strcmp(oferta1.destinatie, "") == 0 ){
+       19:   28-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 18
+        1:   29:        return 2;
+        1:   29-block  0
+        -:   30:    }
+       18:   31:    if(validare_data(*oferta1.data_plecare) == 1){
+       18:   31-block  0
+call    0 returned 18
+branch  1 taken 1 (fallthrough)
+branch  2 taken 17
+        1:   32:        return 2;
+        1:   32-block  0
+        -:   33:    }
+       17:   34:    if(oferta1.pret <= 0){
+       17:   34-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 16
+        1:   35:        return 2;
+        1:   35-block  0
+        -:   36:    }
+       16:   37:    return 0;
+       16:   37-block  0
+        -:   38:}
+        -:   39:
+        -:   40:
+        -:   41:
+function test_validare_oferta called 1 returned 100% blocks executed 84%
+        1:   42:void test_validare_oferta(){
+        1:   43:    data * data1 = malloc(sizeof (data));
+        1:   44:    creare_data(data1, 12,3,2024);
+        1:   44-block  0
+call    0 returned 1
+        -:   45:
+        1:   46:    oferta * oferta1 = malloc(sizeof (oferta));
+        1:   47:    creare_oferta(oferta1, "Munte", "Fagaras", data1, 500);
+call    0 returned 1
+        -:   48:
+        1:   49:    data * data2 = malloc(sizeof (data));
+        1:   50:    creare_data(data2, 12,3,2024);
+call    0 returned 1
+        -:   51:
+        1:   52:    oferta * oferta2 = malloc(sizeof(oferta));
+        1:   53:    creare_oferta(oferta2, "Mare", "", data2, 500);
+call    0 returned 1
+        -:   54:
+        1:   55:    data * data3 = malloc(sizeof (data));
+        1:   56:    creare_data(data3, 12,3,2024);
+call    0 returned 1
+        -:   57:
+        1:   58:    oferta * oferta3 = malloc(sizeof(oferta));
+        1:   59:    creare_oferta(oferta3, "", "Paris", data3, 500);
+call    0 returned 1
+        -:   60:
+        1:   61:    data * data4 = malloc(sizeof (data));
+        1:   62:    creare_data(data4, 12,3,2024);
+call    0 returned 1
+        1:   63:    oferta * oferta4 = malloc(sizeof(oferta));
+        1:   64:    creare_oferta(oferta4, "Test", "Paris", data4, 500);
+call    0 returned 1
+        -:   65:
+        1:   66:    data * data5 = malloc(sizeof (data));
+        1:   67:    creare_data(data5, 12,3,2024);
+call    0 returned 1
+        1:   68:    oferta * oferta5 = malloc(sizeof(oferta));
+        1:   69:    creare_oferta(oferta5, "Munte", "Fagaras", data5, -500);
+call    0 returned 1
+        -:   70:
+        1:   71:    data * data6 = malloc(sizeof (data));
+        1:   72:    creare_data(data6, 12,-3,2024);
+call    0 returned 1
+        1:   73:    oferta * oferta6 = malloc(sizeof(oferta));
+        1:   74:    creare_oferta(oferta6, "Munte", "Fagaras", data6, 500);
+call    0 returned 1
+        -:   75:
+       1*:   76:    assert(validare_oferta(*oferta1) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   76-block  0
+call    3 never executed
+       1*:   77:    assert(validare_oferta(*oferta2) == 2);
+        1:   77-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   77-block  1
+call    3 never executed
+       1*:   78:    assert(validare_oferta(*oferta3) == 2);
+        1:   78-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   78-block  1
+call    3 never executed
+       1*:   79:    assert(validare_oferta(*oferta4) == 2);
+        1:   79-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   79-block  1
+call    3 never executed
+       1*:   80:    assert(validare_oferta(*oferta5) == 2);
+        1:   80-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   80-block  1
+call    3 never executed
+       1*:   81:    assert(validare_oferta(*oferta6) == 2);
+        1:   81-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   81-block  1
+call    3 never executed
+        -:   82:
+        1:   83:    distrugere_oferta(oferta1);
+        1:   83-block  0
+call    0 returned 1
+        1:   84:    distrugere_oferta(oferta2);
+call    0 returned 1
+        1:   85:    distrugere_oferta(oferta3);
+call    0 returned 1
+        1:   86:    distrugere_oferta(oferta4);
+call    0 returned 1
+        1:   87:    distrugere_oferta(oferta5);
+call    0 returned 1
+        1:   88:    distrugere_oferta(oferta6);
+call    0 returned 1
+        1:   89:}
+        -:   90:
+function test_validare_data called 1 returned 100% blocks executed 76%
+        1:   91:void test_validare_data(){
+        1:   92:    data * data1 = malloc(sizeof(data));
+        1:   93:    creare_data(data1, 12,3,2024);
+        1:   93-block  0
+call    0 returned 1
+        -:   94:
+        1:   95:    data *data2 = malloc(sizeof(data));
+        1:   96:    creare_data(data2,-1,4,2024);
+call    0 returned 1
+        -:   97:
+        1:   98:    data *data3 = malloc(sizeof(data));
+        1:   99:    creare_data(data3,45, 4, 2024);
+call    0 returned 1
+        -:  100:
+        1:  101:    data *data4 = malloc(sizeof(data));
+        1:  102:    creare_data(data4,12, 7, -1);
+call    0 returned 1
+        -:  103:
+        1:  104:    data *data5 = malloc(sizeof(data));
+        1:  105:    creare_data(data5,3, -1, 2024);
+call    0 returned 1
+        -:  106:
+        1:  107:    data *data6 = malloc(sizeof(data));
+        1:  108:    creare_data(data6,3, 45, 2024);
+call    0 returned 1
+        -:  109:
+       1*:  110:    assert(validare_data(*data1) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  110-block  0
+call    3 never executed
+       1*:  111:    assert(validare_data(*data2) == 1);
+        1:  111-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  111-block  1
+call    3 never executed
+       1*:  112:    assert(validare_data(*data3) == 1);
+        1:  112-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  112-block  1
+call    3 never executed
+       1*:  113:    assert(validare_data(*data4) == 1);
+        1:  113-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  113-block  1
+call    3 never executed
+       1*:  114:    assert(validare_data(*data5) == 1);
+        1:  114-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  114-block  1
+call    3 never executed
+       1*:  115:    assert(validare_data(*data6) == 1);
+        1:  115-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  115-block  1
+call    3 never executed
+        -:  116:
+        1:  117:    free(data1);
+        1:  118:    free(data2);
+        1:  119:    free(data3);
+        1:  120:    free(data4);
+        1:  121:    free(data5);
+        1:  122:    free(data6);
+        -:  123:
+        -:  124:
+        1:  125:}
+        -:  126:
+function teste_validator called 1 returned 100% blocks executed 100%
+        1:  127:void teste_validator(){
+        1:  128:    test_validare_data();
+        1:  128-block  0
+call    0 returned 1
+        1:  129:    test_validare_oferta();
+call    0 returned 1
+        1:  130:}

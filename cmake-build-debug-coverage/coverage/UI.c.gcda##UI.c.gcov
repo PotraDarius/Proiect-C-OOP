@@ -1,0 +1,529 @@
+        -:    0:Source:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/UI.c
+        -:    0:Graph:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/cmake-build-debug-coverage/CMakeFiles/tema_lab2.dir/UI.c.gcno
+        -:    0:Data:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/cmake-build-debug-coverage/CMakeFiles/tema_lab2.dir/UI.c.gcda
+        -:    0:Runs:1
+        -:    1:#include "UI.h"
+        -:    2:#include "service.h"
+        -:    3:#include "stdio.h"
+        -:    4:#include "stdlib.h"
+        -:    5:
+        -:    6:
+        -:    7:
+function add_oferta_UI called 0 returned 0% blocks executed 0%
+    #####:    8:void add_oferta_UI(service * service1){
+        -:    9:    char tip[30];
+        -:   10:    char destinatie[30];
+        -:   11:    char buffer;
+        -:   12:    int an, luna, zi, pret;
+        -:   13:
+    #####:   14:    printf("Dati tipul ofertei(Mare/Munte/City Break): ");
+    %%%%%:   14-block  0
+call    0 never executed
+    #####:   15:    scanf("%c", &buffer);
+call    0 never executed
+    #####:   16:    scanf("%[^\n]s", tip);
+call    0 never executed
+        -:   17:
+    #####:   18:    printf("Dati destinatia ofertei: ");
+call    0 never executed
+    #####:   19:    scanf("%c", &buffer);
+call    0 never executed
+    #####:   20:    scanf("%[^\n]s", destinatie);
+call    0 never executed
+        -:   21:
+    #####:   22:    printf("Dati anul datii de plecare a ofertei: ");
+call    0 never executed
+    #####:   23:    scanf("%d", &an);
+call    0 never executed
+        -:   24:
+    #####:   25:    printf("Dati luna datii de plecare a ofertei: ");
+call    0 never executed
+    #####:   26:    scanf("%d", &luna);
+call    0 never executed
+        -:   27:
+    #####:   28:    printf("Dati ziua datii de plecare a ofertei: ");
+call    0 never executed
+    #####:   29:    scanf("%d", &zi);
+call    0 never executed
+        -:   30:
+    #####:   31:    printf("Dati pretul ofertei: ");
+call    0 never executed
+    #####:   32:    scanf("%d", &pret);
+call    0 never executed
+        -:   33:
+    #####:   34:    int status = adaugare_oferta(service1,tip,destinatie,an,luna,zi,pret);
+call    0 never executed
+        -:   35:
+    #####:   36:    if(status != 0){
+branch  0 never executed
+branch  1 never executed
+    #####:   37:        if(status == 1){
+    %%%%%:   37-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:   38:            printf("Exista deja aceasta oferta!\n");
+    %%%%%:   38-block  0
+call    0 never executed
+        -:   39:        }
+    #####:   40:        else if(status == 2){
+    %%%%%:   40-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:   41:            printf("Date de intrare invalide!\n");
+    %%%%%:   41-block  0
+call    0 never executed
+        -:   42:        }
+        -:   43:    }
+        -:   44:    else{
+    #####:   45:        printf("Adaugare reusita!\n");
+    %%%%%:   45-block  0
+call    0 never executed
+        -:   46:    }
+        -:   47:
+    #####:   48:}
+        -:   49:
+function del_oferta_UI called 0 returned 0% blocks executed 0%
+    #####:   50:void del_oferta_UI(service * service1){
+        -:   51:
+        -:   52:    int index;
+    #####:   53:    printf("Dati numarul ofertei pe care doriti sa o stergeti: ");
+    %%%%%:   53-block  0
+call    0 never executed
+    #####:   54:    scanf("%d", &index);
+call    0 never executed
+        -:   55:
+    #####:   56:    int status = stergere_oferta(service1, index);
+call    0 never executed
+        -:   57:
+    #####:   58:    if (status != 0){
+branch  0 never executed
+branch  1 never executed
+    #####:   59:        printf("Nu exista o oferta pe aceasta pozitie!\n");
+    %%%%%:   59-block  0
+call    0 never executed
+        -:   60:    }
+        -:   61:    else{
+    #####:   62:        printf("Stergere efectuata!\n");
+    %%%%%:   62-block  0
+call    0 never executed
+        -:   63:    }
+        -:   64:
+    #####:   65:}
+        -:   66:
+function modif_oferta_UI called 0 returned 0% blocks executed 0%
+    #####:   67:void modif_oferta_UI(service * service1){
+        -:   68:    char tip[30];
+        -:   69:    char destinatie[30];
+        -:   70:    char buffer;
+        -:   71:    int an, luna, zi, pret;
+        -:   72:    int index;
+        -:   73:
+    #####:   74:    printf("Dati numarul ofertei pe care doriti sa o modificati: ");
+    %%%%%:   74-block  0
+call    0 never executed
+    #####:   75:    scanf("%d", &index);
+call    0 never executed
+        -:   76:
+    #####:   77:    printf("Dati noul tip al ofertei(Mare/Munte/City Break): ");
+call    0 never executed
+    #####:   78:    scanf("%c", &buffer);
+call    0 never executed
+    #####:   79:    scanf("%[^\n]s", tip);
+call    0 never executed
+        -:   80:
+    #####:   81:    printf("Dati noua destinatie a ofertei: ");
+call    0 never executed
+    #####:   82:    scanf("%c", &buffer);
+call    0 never executed
+    #####:   83:    scanf("%[^\n]s", destinatie);
+call    0 never executed
+        -:   84:
+    #####:   85:    printf("Dati noul an al datii de plecare a ofertei: ");
+call    0 never executed
+    #####:   86:    scanf("%d", &an);
+call    0 never executed
+        -:   87:
+    #####:   88:    printf("Dati noua luna a datii de plecare a ofertei: ");
+call    0 never executed
+    #####:   89:    scanf("%d", &luna);
+call    0 never executed
+        -:   90:
+    #####:   91:    printf("Dati noua zi a datii de plecare a ofertei: ");
+call    0 never executed
+    #####:   92:    scanf("%d", &zi);
+call    0 never executed
+        -:   93:
+    #####:   94:    printf("Dati noul pret al ofertei: ");
+call    0 never executed
+    #####:   95:    scanf("%d", &pret);
+call    0 never executed
+        -:   96:
+    #####:   97:    int status = modificare_oferta(service1,index,tip,destinatie,an,luna,zi,pret);
+call    0 never executed
+        -:   98:
+    #####:   99:    if(status != 0){
+branch  0 never executed
+branch  1 never executed
+    #####:  100:        if(status == 1){
+    %%%%%:  100-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  101:            printf("Nu exista o oferta pe aceasta pozitie!\n");
+    %%%%%:  101-block  0
+call    0 never executed
+        -:  102:        }
+    #####:  103:        else if(status == 2){
+    %%%%%:  103-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  104:            printf("Date de intrare invalide!\n");
+    %%%%%:  104-block  0
+call    0 never executed
+        -:  105:        }
+        -:  106:    }
+        -:  107:    else{
+    #####:  108:        printf("Modificare reusita!\n");
+    %%%%%:  108-block  0
+call    0 never executed
+        -:  109:    }
+    #####:  110:}
+        -:  111:
+function filtru_destinatie_UI called 0 returned 0% blocks executed 0%
+    #####:  112:void filtru_destinatie_UI(service * service1){
+    #####:  113:    oferta **oferte= malloc(service1->repository->numar_oferte_curente* sizeof(oferta*));
+    #####:  114:    for(int i = 0; i < service1->repository->numar_oferte_curente ; i++){
+    %%%%%:  114-block  0
+    %%%%%:  114-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  115:        data * data1 = malloc(sizeof(data));
+    #####:  116:        creare_data(data1,1,1,1);
+    %%%%%:  116-block  0
+call    0 never executed
+    #####:  117:        oferte[i] = malloc(sizeof(oferta));
+    #####:  118:        creare_oferta(oferte[i],"1","1",data1,1);
+call    0 never executed
+        -:  119:    }
+        -:  120:    char buffer;
+        -:  121:    char destinatie[30];
+        -:  122:
+    #####:  123:    printf("Dati destinatia dupa care doriti sa se filtreze ofertele: ");
+    %%%%%:  123-block  0
+call    0 never executed
+    #####:  124:    scanf("%c", &buffer);
+call    0 never executed
+    #####:  125:    scanf("%[^\n]s", destinatie);
+call    0 never executed
+        -:  126:
+    #####:  127:    int numar_oferte_gasite = filtru_destinatie(service1, destinatie, oferte);
+call    0 never executed
+        -:  128:
+    #####:  129:    if(numar_oferte_gasite != 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:  130:        for (int i = 0; i < numar_oferte_gasite; i++) {
+    %%%%%:  130-block  0
+    %%%%%:  130-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  131:            printf("%d: %s %s %d.%d.%d %d lei\n", i, oferte[i]->tip, oferte[i]->destinatie, oferte[i]->data_plecare->zi,
+    #####:  132:                   oferte[i]->data_plecare->luna, oferte[i]->data_plecare->an, oferte[i]->pret);
+    %%%%%:  132-block  0
+call    0 never executed
+        -:  133:        }
+        -:  134:    }
+        -:  135:    else{
+    #####:  136:        printf("Nu s-a gasit nicio oferta corespunzatoare!\n");
+    %%%%%:  136-block  0
+call    0 never executed
+        -:  137:    }
+    #####:  138:    for(int i = 0; i < service1->repository->numar_oferte_curente ; i++){
+    %%%%%:  138-block  0
+    %%%%%:  138-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  139:        distrugere_oferta(oferte[i]);
+    %%%%%:  139-block  0
+call    0 never executed
+        -:  140:    }
+    #####:  141:    free(oferte);
+    #####:  142:}
+        -:  143:
+        -:  144:
+function filtru_pret_UI called 0 returned 0% blocks executed 0%
+    #####:  145:void filtru_pret_UI(service *service1){
+    #####:  146:    oferta **oferte= malloc(service1->repository->numar_oferte_curente* sizeof(oferta*));
+    #####:  147:    for(int i = 0; i < service1->repository->numar_oferte_curente ; i++){
+    %%%%%:  147-block  0
+    %%%%%:  147-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  148:        data * data1 = malloc(sizeof(data));
+    #####:  149:        creare_data(data1,1,1,1);
+    %%%%%:  149-block  0
+call    0 never executed
+    #####:  150:        oferte[i] = malloc(sizeof(oferta));
+    #####:  151:        creare_oferta(oferte[i],"1","1",data1,1);
+call    0 never executed
+        -:  152:    }
+        -:  153:    int  pret;
+        -:  154:
+    #####:  155:    printf("Dati pretul maxim pe care il doriti de la oferte: ");
+    %%%%%:  155-block  0
+call    0 never executed
+    #####:  156:    scanf("%d", &pret);
+call    0 never executed
+        -:  157:
+    #####:  158:    int numar_oferte_gasite = filtru_pret(service1, pret, oferte);
+call    0 never executed
+        -:  159:
+    #####:  160:    if(numar_oferte_gasite != 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:  161:        for (int i = 0; i < numar_oferte_gasite; i++) {
+    %%%%%:  161-block  0
+    %%%%%:  161-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  162:            printf("%d: %s %s %d.%d.%d %d lei\n", i, oferte[i]->tip, oferte[i]->destinatie, oferte[i]->data_plecare->zi,
+    #####:  163:                   oferte[i]->data_plecare->luna, oferte[i]->data_plecare->an, oferte[i]->pret);
+    %%%%%:  163-block  0
+call    0 never executed
+        -:  164:        }
+        -:  165:    }
+        -:  166:    else{
+    #####:  167:        printf("Nu s-a gasit nicio oferta corespunzatoare!\n");
+    %%%%%:  167-block  0
+call    0 never executed
+        -:  168:    }
+    #####:  169:    for(int i = 0; i < service1->repository->numar_oferte_curente ; i++){
+    %%%%%:  169-block  0
+    %%%%%:  169-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  170:        distrugere_oferta(oferte[i]);
+    %%%%%:  170-block  0
+call    0 never executed
+        -:  171:    }
+    #####:  172:    free(oferte);
+    #####:  173:}
+        -:  174:
+function filtru_tip_UI called 0 returned 0% blocks executed 0%
+    #####:  175:void filtru_tip_UI(service * service1){
+    #####:  176:    oferta **oferte = malloc(service1->repository->numar_oferte_curente* sizeof(oferta*));
+    #####:  177:    for(int i = 0; i < service1->repository->numar_oferte_curente ; i++){
+    %%%%%:  177-block  0
+    %%%%%:  177-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  178:        data * data1 = malloc(sizeof(data));
+    #####:  179:        creare_data(data1,1,1,1);
+    %%%%%:  179-block  0
+call    0 never executed
+    #####:  180:        oferte[i] = malloc(sizeof(oferta));
+    #####:  181:        creare_oferta(oferte[i],"1","1",data1,1);
+call    0 never executed
+        -:  182:    }
+        -:  183:    char buffer;
+        -:  184:    char tip[30];
+        -:  185:
+    #####:  186:    printf("Dati tipul dupa care doriti sa se filtreze ofertele: ");
+    %%%%%:  186-block  0
+call    0 never executed
+    #####:  187:    scanf("%c", &buffer);
+call    0 never executed
+    #####:  188:    scanf("%[^\n]s", tip);
+call    0 never executed
+        -:  189:
+    #####:  190:    int numar_oferte_gasite = filtru_tip(service1, tip, oferte);
+call    0 never executed
+        -:  191:
+    #####:  192:    if(numar_oferte_gasite != 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:  193:        for (int i = 0; i < numar_oferte_gasite; i++) {
+    %%%%%:  193-block  0
+    %%%%%:  193-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  194:            printf("%d: %s %s %d.%d.%d %d lei\n", i, oferte[i]->tip, oferte[i]->destinatie, oferte[i]->data_plecare->zi,
+    #####:  195:                   oferte[i]->data_plecare->luna, oferte[i]->data_plecare->an, oferte[i]->pret);
+    %%%%%:  195-block  0
+call    0 never executed
+        -:  196:        }
+        -:  197:    }
+        -:  198:    else{
+    #####:  199:        printf("Nu s-a gasit nicio oferta corespunzatoare!\n");
+    %%%%%:  199-block  0
+call    0 never executed
+        -:  200:    }
+    #####:  201:    for(int i = 0; i < service1->repository->numar_oferte_curente ; i++){
+    %%%%%:  201-block  0
+    %%%%%:  201-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  202:        distrugere_oferta(oferte[i]);
+    %%%%%:  202-block  0
+call    0 never executed
+        -:  203:    }
+    #####:  204:    free(oferte);
+    #####:  205:}
+        -:  206:
+function sortare_UI called 0 returned 0% blocks executed 0%
+    #####:  207:void sortare_UI(service * service1){
+        -:  208:    char directie[30];
+        -:  209:    char buffer;
+    #####:  210:    printf("Doriti sortare crescatoare sau descrescatoare?: ");
+    %%%%%:  210-block  0
+call    0 never executed
+    #####:  211:    scanf("%c", &buffer);
+call    0 never executed
+    #####:  212:    scanf("%[^\n]s", directie);
+call    0 never executed
+    #####:  213:    int status = sortare(service1, directie,verificare_conditie_sortare_pret,verificare_conditie_sortare_destinatie);
+call    0 never executed
+    #####:  214:    if(status == 0) {
+branch  0 never executed
+branch  1 never executed
+    #####:  215:        for (int i = 0; i < service1->repository->numar_oferte_curente; i++) {
+    %%%%%:  215-block  0
+    %%%%%:  215-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  216:            printf("%d: %s %s %d.%d.%d %d lei\n", i, service1->repository->oferte[i]->tip,
+    #####:  217:                   service1->repository->oferte[i]->destinatie, service1->repository->oferte[i]->data_plecare->zi,
+    #####:  218:                   service1->repository->oferte[i]->data_plecare->luna,
+    #####:  219:                   service1->repository->oferte[i]->data_plecare->an,
+    #####:  220:                   service1->repository->oferte[i]->pret);
+    %%%%%:  220-block  0
+call    0 never executed
+        -:  221:        }
+        -:  222:    }
+        -:  223:    else{
+    #####:  224:        printf("Nu se poate efectua sortarea!\n");
+    %%%%%:  224-block  0
+call    0 never executed
+        -:  225:    }
+        -:  226:
+    #####:  227:}
+        -:  228:
+function toate_ofertele called 0 returned 0% blocks executed 0%
+    #####:  229:void toate_ofertele(service service1){
+    #####:  230:    if(service1.repository->numar_oferte_curente > 0) {
+    %%%%%:  230-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  231:        for (int i = 0; i < service1.repository->numar_oferte_curente; i++) {
+    %%%%%:  231-block  0
+    %%%%%:  231-block  1
+branch  0 never executed
+branch  1 never executed
+    #####:  232:            printf("%d: %s %s %d.%d.%d %d lei\n", i, service1.repository->oferte[i]->tip,
+    #####:  233:                   service1.repository->oferte[i]->destinatie, service1.repository->oferte[i]->data_plecare->zi,
+    #####:  234:                   service1.repository->oferte[i]->data_plecare->luna,
+    #####:  235:                   service1.repository->oferte[i]->data_plecare->an,
+    #####:  236:                   service1.repository->oferte[i]->pret);
+    %%%%%:  236-block  0
+call    0 never executed
+        -:  237:        }
+        -:  238:    }
+        -:  239:    else{
+    #####:  240:        printf("Nu exista oferte disponibile!\n");
+    %%%%%:  240-block  0
+call    0 never executed
+        -:  241:    }
+        -:  242:
+        -:  243:
+    #####:  244:}
+        -:  245:
+        -:  246:
+function run called 1 returned 100% blocks executed 43%
+        1:  247:void run(){
+        1:  248:    repo * repository = malloc(sizeof(repo));
+        1:  249:    creare_repository(repository);
+        1:  249-block  0
+call    0 returned 1
+        1:  250:    service*  service1 = malloc(sizeof(service));
+        1:  251:    creare_service(service1, repository);
+call    0 returned 1
+        1:  252:    int still_running = 1;
+        2:  253:    while (still_running){
+        2:  253-block  0
+branch  0 taken 1
+branch  1 taken 1 (fallthrough)
+        1:  254:        printf("1: Adaugare oferta\n2: Stergere oferta\n3: Modificare oferta\n");
+        1:  254-block  0
+call    0 returned 1
+        1:  255:        printf("4: Filtru dupa destinatie\n5: Filtru dupa pret\n6: Filtru dupa tip\n");
+call    0 returned 1
+        1:  256:        printf("7: Sortare dupa pret si destinatie\n8: Afisare oferte disponibile\n0: Iesire\nOptiunea: ");
+call    0 returned 1
+        1:  257:        int optiune = 0;
+        1:  258:        scanf("%d", &optiune);
+call    0 returned 1
+        1:  259:        switch (optiune) {
+branch  0 taken 0
+branch  1 taken 0
+branch  2 taken 0
+branch  3 taken 0
+branch  4 taken 0
+branch  5 taken 0
+branch  6 taken 0
+branch  7 taken 0
+branch  8 taken 1
+branch  9 taken 0
+    #####:  260:            case 1:
+    #####:  261:                add_oferta_UI(service1);
+    %%%%%:  261-block  0
+call    0 never executed
+    #####:  262:                break;
+    #####:  263:            case 2:
+    #####:  264:                del_oferta_UI(service1);
+    %%%%%:  264-block  0
+call    0 never executed
+    #####:  265:                break;
+    #####:  266:            case 3:
+    #####:  267:                modif_oferta_UI(service1);
+    %%%%%:  267-block  0
+call    0 never executed
+    #####:  268:                break;
+    #####:  269:            case 4:
+    #####:  270:                filtru_destinatie_UI(service1);
+    %%%%%:  270-block  0
+call    0 never executed
+    #####:  271:                break;
+    #####:  272:            case 5:
+    #####:  273:                filtru_pret_UI(service1);
+    %%%%%:  273-block  0
+call    0 never executed
+    #####:  274:                break;
+    #####:  275:            case 6:
+    #####:  276:                filtru_tip_UI(service1);
+    %%%%%:  276-block  0
+call    0 never executed
+    #####:  277:                break;
+    #####:  278:            case 7:
+    #####:  279:                sortare_UI(service1);
+    %%%%%:  279-block  0
+call    0 never executed
+    #####:  280:                break;
+    #####:  281:            case 8:
+    #####:  282:                toate_ofertele(*service1);
+    %%%%%:  282-block  0
+call    0 never executed
+    #####:  283:                break;
+        1:  284:            case 0:
+        1:  285:                still_running = 0;
+        1:  286:                break;
+        1:  286-block  0
+    #####:  287:            default:
+    #####:  288:                printf("Optiune Invalida!\n");
+    %%%%%:  288-block  0
+call    0 never executed
+        -:  289:
+        -:  290:        }
+        -:  291:    }
+        1:  292:    distrugere_service(service1);
+        1:  292-block  0
+call    0 returned 1
+        1:  293:}

@@ -1,0 +1,205 @@
+        -:    0:Source:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/domain.c
+        -:    0:Graph:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/cmake-build-debug-coverage/CMakeFiles/tema_lab2.dir/domain.c.gcno
+        -:    0:Data:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/cmake-build-debug-coverage/CMakeFiles/tema_lab2.dir/domain.c.gcda
+        -:    0:Runs:1
+        -:    1:#include "domain.h"
+        -:    2:#include "string.h"
+        -:    3:#include "assert.h"
+        -:    4:#include "stdlib.h"
+        -:    5:
+function creare_oferta called 63 returned 100% blocks executed 100%
+       63:    6:void creare_oferta( oferta * oferta1, char * tip, char * destinatie, data * data_plecare, int pret){
+       63:    7:    oferta1->tip = malloc((strlen(tip)+1) * sizeof (char * ));
+       63:    8:    strcpy(oferta1->tip, tip);
+        -:    9:
+       63:   10:    oferta1->destinatie = malloc((strlen(destinatie)+1) * sizeof (char *));
+       63:   11:    strcpy(oferta1->destinatie, destinatie);
+       63:   12:    oferta1->pret = pret;
+        -:   13:
+        -:   14:
+       63:   15:    oferta1->data_plecare = data_plecare;
+        -:   16:
+       63:   17:}
+        -:   18:
+function creare_data called 72 returned 100% blocks executed 100%
+       72:   19:void creare_data(data * data1, int zi, int luna, int an){
+       72:   20:    data1->zi = zi;
+       72:   21:    data1->luna = luna;
+       72:   22:    data1->an = an;
+       72:   23:}
+        -:   24:
+        -:   25:
+        -:   26:
+        -:   27:
+function verificare_egalitate_data called 12 returned 100% blocks executed 100%
+       12:   28:int verificare_egalitate_data(data data1, data data2){
+       12:   29:    if(data1.an == data2.an && data1.luna == data2.luna && data1.zi == data2.zi){
+       12:   29-block  0
+branch  0 taken 12 (fallthrough)
+branch  1 taken 0
+       12:   29-block  1
+branch  2 taken 11 (fallthrough)
+branch  3 taken 1
+       11:   29-block  2
+branch  4 taken 11 (fallthrough)
+branch  5 taken 0
+       11:   30:        return 1;
+       11:   30-block  0
+        -:   31:    }
+        1:   32:    return 0;
+        1:   32-block  0
+        -:   33:}
+        -:   34:
+function verificare_egalitate called 25 returned 100% blocks executed 100%
+       25:   35:int verificare_egalitate(oferta oferta1, oferta oferta2){
+       25:   36:    if(strcmp(oferta1.tip, oferta2.tip) == 0){
+       25:   36-block  0
+branch  0 taken 21 (fallthrough)
+branch  1 taken 4
+       21:   37:        if(strcmp(oferta1.destinatie, oferta2.destinatie) == 0){
+       21:   37-block  0
+branch  0 taken 9 (fallthrough)
+branch  1 taken 12
+        9:   38:            if(verificare_egalitate_data(*oferta1.data_plecare, *oferta2.data_plecare) == 1){
+        9:   38-block  0
+call    0 returned 9
+branch  1 taken 9 (fallthrough)
+branch  2 taken 0
+        9:   39:                if(oferta1.pret == oferta2.pret){
+        9:   39-block  0
+branch  0 taken 9 (fallthrough)
+branch  1 taken 0
+        9:   40:                    return 1;
+        9:   40-block  0
+        -:   41:                }
+        -:   42:            }
+        -:   43:        }
+        -:   44:    }
+       16:   45:    return 0;
+       16:   45-block  0
+        -:   46:}
+        -:   47:
+function distrugere_oferta called 63 returned 100% blocks executed 100%
+       63:   48:void distrugere_oferta(oferta * oferta1){
+       63:   49:    free(oferta1->tip);
+       63:   50:    free(oferta1->destinatie);
+       63:   51:    free(oferta1->data_plecare);
+       63:   52:    free(oferta1);
+       63:   53:}
+        -:   54:
+function test_creare_si_distrugere called 1 returned 100% blocks executed 69%
+        1:   55:void test_creare_si_distrugere(){
+        1:   56:    oferta * oferta1 = malloc(1*sizeof (oferta));
+        -:   57:
+        1:   58:    data *data1 = malloc(sizeof(data));
+        1:   59:    creare_data(data1, 12,3,2024);
+        1:   59-block  0
+call    0 returned 1
+        -:   60:
+        1:   61:    creare_oferta(oferta1, "munte", "Fagaras", data1, 500);
+call    0 returned 1
+       1*:   62:    assert(oferta1->pret == 500);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   62-block  0
+call    2 never executed
+       1*:   63:    assert(strcmp(oferta1->tip, "munte") == 0);
+        1:   63-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   63-block  1
+call    2 never executed
+       1*:   64:    assert(strcmp(oferta1->destinatie, "Fagaras") == 0);
+        1:   64-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   64-block  1
+call    2 never executed
+       1*:   65:    assert(verificare_egalitate_data(*oferta1->data_plecare, *data1) == 1);
+        1:   65-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   65-block  1
+call    3 never executed
+        -:   66:
+        1:   67:    distrugere_oferta(oferta1);
+        1:   67-block  0
+call    0 returned 1
+        1:   68:}
+        -:   69:
+function test_verificare_egalitate_oferta called 1 returned 100% blocks executed 90%
+        1:   70:void test_verificare_egalitate_oferta(){
+        1:   71:    data *data1 = malloc(sizeof(data));
+        1:   72:    creare_data(data1, 12,3,2024);
+        1:   72-block  0
+call    0 returned 1
+        -:   73:    oferta * oferta1 ;
+        1:   74:    oferta1 = malloc(sizeof (oferta));
+        1:   75:    creare_oferta(oferta1, "munte", "Fagaras", data1, 500);
+call    0 returned 1
+        -:   76:
+        -:   77:    oferta * oferta2;
+        1:   78:    data *data2 = malloc(sizeof(data));
+        1:   79:    creare_data(data2, 12,3,2024);
+call    0 returned 1
+        1:   80:    oferta2 = malloc(sizeof (oferta));
+        1:   81:    creare_oferta(oferta2, "munte", "Fagaras", data2, 500);
+call    0 returned 1
+        -:   82:
+       1*:   83:    assert(verificare_egalitate(*oferta1, *oferta2) == 1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   83-block  0
+call    3 never executed
+        -:   84:
+        1:   85:    distrugere_oferta(oferta1);
+        1:   85-block  0
+call    0 returned 1
+        1:   86:    distrugere_oferta(oferta2);
+call    0 returned 1
+        1:   87:}
+        -:   88:
+        -:   89:
+function test_verificare_egalitate_data called 1 returned 100% blocks executed 80%
+        1:   90:void test_verificare_egalitate_data(){
+        1:   91:    data *data1 = malloc(sizeof (data));
+        1:   92:    creare_data(data1, 4,5,2024);
+        1:   92-block  0
+call    0 returned 1
+        1:   93:    data *data2 = malloc(sizeof (data));
+        1:   94:    creare_data(data2, 4,6,2024);
+call    0 returned 1
+        1:   95:    data *data3 = malloc(sizeof(data));
+        1:   96:    creare_data(data3, 4,5,2024);
+call    0 returned 1
+        -:   97:
+       1*:   98:    assert(verificare_egalitate_data(*data1, *data2) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   98-block  0
+call    3 never executed
+       1*:   99:    assert(verificare_egalitate_data(*data1, *data3) == 1);
+        1:   99-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   99-block  1
+call    3 never executed
+        1:  100:    free(data1);
+        1:  101:    free(data2);
+        1:  102:    free(data3);
+        1:  103:}
+        -:  104:
+function teste_domain called 1 returned 100% blocks executed 100%
+        1:  105:void teste_domain(){
+        1:  106:    test_creare_si_distrugere();
+        1:  106-block  0
+call    0 returned 1
+        1:  107:    test_verificare_egalitate_data();
+call    0 returned 1
+        1:  108:    test_verificare_egalitate_oferta();
+call    0 returned 1
+        1:  109:}

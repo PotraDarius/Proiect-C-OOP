@@ -1,0 +1,366 @@
+        -:    0:Source:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/repository.c
+        -:    0:Graph:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/cmake-build-debug-coverage/CMakeFiles/tema_lab2.dir/repository.c.gcno
+        -:    0:Data:/mnt/c/Users/chich/OneDrive/Desktop/An I Sem II/Programare Orientata Obiect/tema_lab2/cmake-build-debug-coverage/CMakeFiles/tema_lab2.dir/repository.c.gcda
+        -:    0:Runs:1
+        -:    1:#include "domain.h"
+        -:    2:#include "repository.h"
+        -:    3:#include "assert.h"
+        -:    4:#include "stdlib.h"
+        -:    5:#include "string.h"
+        -:    6:
+        -:    7:
+function creare_repository called 11 returned 100% blocks executed 100%
+       11:    8:void creare_repository(repo * repo1){
+       11:    9:    repo1->numar_oferte_curente = 0;
+       11:   10:    repo1->capacitate = 2;
+       11:   11:    repo1->oferte = malloc(repo1->capacitate * sizeof(oferta *));
+       11:   12:}
+        -:   13:
+function distrugere_repository called 11 returned 100% blocks executed 100%
+       11:   14:void distrugere_repository(repo * repo1){
+       11:   15:    distrugere_lista_oferta(repo1);
+       11:   15-block  0
+call    0 returned 11
+       11:   16:    free(repo1);
+       11:   17:}
+        -:   18:
+function redimensionare_in_sus called 3 returned 100% blocks executed 100%
+        3:   19:void redimensionare_in_sus(repo *  repo1){
+        3:   20:    oferta * *  aux = malloc(2* repo1->capacitate * sizeof (oferta*));
+       11:   21:    for(int i = 0; i < repo1->capacitate; i++)
+        3:   21-block  0
+       11:   21-block  1
+branch  0 taken 8
+branch  1 taken 3 (fallthrough)
+        8:   22:        aux[i] = repo1->oferte[i];
+        8:   22-block  0
+        3:   23:    repo1->capacitate *= 2;
+        3:   24:    free(repo1->oferte);
+        3:   25:    repo1->oferte = aux;
+        3:   26:}
+        -:   27:
+function redimensionare_in_jos called 2 returned 100% blocks executed 100%
+        2:   28:void redimensionare_in_jos(repo * repo1){
+        2:   29:    oferta * * aux = malloc(repo1->capacitate/2 * sizeof(oferta*) );
+        3:   30:    for(int i = 0; i < repo1->numar_oferte_curente; i++)
+        2:   30-block  0
+        3:   30-block  1
+branch  0 taken 1
+branch  1 taken 2 (fallthrough)
+        1:   31:        aux[i] = repo1->oferte[i];
+        1:   31-block  0
+        2:   32:    repo1->capacitate /= 2;
+        2:   33:    free(repo1->oferte);
+        2:   34:    repo1->oferte = aux;
+        2:   35:}
+        -:   36:
+function add_oferta called 19 returned 100% blocks executed 100%
+       19:   37:int add_oferta(repo* repo1, oferta * oferta1){
+       35:   38:    for(int i = 0; i < repo1->numar_oferte_curente; i++){
+       19:   38-block  0
+       16:   38-block  1
+       35:   38-block  2
+branch  0 taken 17
+branch  1 taken 18 (fallthrough)
+       17:   39:        if(verificare_egalitate(*oferta1, *repo1->oferte[i]) == 1){
+       17:   39-block  0
+call    0 returned 17
+branch  1 taken 1 (fallthrough)
+branch  2 taken 16
+        1:   40:            return 1;
+        1:   40-block  0
+        -:   41:        }
+        -:   42:    }
+       18:   43:    if (repo1->numar_oferte_curente == repo1->capacitate){
+       18:   43-block  0
+branch  0 taken 3 (fallthrough)
+branch  1 taken 15
+        3:   44:        redimensionare_in_sus(repo1);
+        3:   44-block  0
+call    0 returned 3
+        -:   45:    }
+       18:   46:    repo1->oferte[repo1->numar_oferte_curente++] = oferta1;
+       18:   47:    return 0;
+       18:   47-block  0
+        -:   48:
+        -:   49:}
+        -:   50:
+function copiere_date called 52 returned 100% blocks executed 100%
+       52:   51:void copiere_date(oferta * oferta1, oferta * oferta2){
+       52:   52:    strcpy(oferta1->tip, oferta2->tip);
+       52:   53:    strcpy(oferta1->destinatie, oferta2->destinatie);
+       52:   54:    *oferta1->data_plecare = *oferta2->data_plecare;
+       52:   55:    oferta1->pret = oferta2->pret;
+       52:   56:}
+        -:   57:
+function delete_oferta called 4 returned 100% blocks executed 100%
+        4:   58:int delete_oferta(repo * repo1, int index){
+        4:   59:    if(index >= 0 && index < repo1->numar_oferte_curente){
+        4:   59-block  0
+branch  0 taken 4 (fallthrough)
+branch  1 taken 0
+        4:   59-block  1
+branch  2 taken 3 (fallthrough)
+branch  3 taken 1
+        -:   60:
+        6:   61:        for(int i = index; i < repo1->numar_oferte_curente-1; i++){
+        3:   61-block  0
+        6:   61-block  1
+branch  0 taken 3
+branch  1 taken 3 (fallthrough)
+        3:   62:            copiere_date(repo1->oferte[i], repo1->oferte[i+1]);
+        3:   62-block  0
+call    0 returned 3
+        -:   63:        }
+        3:   64:        distrugere_oferta(repo1->oferte[--repo1->numar_oferte_curente]);
+        3:   64-block  0
+call    0 returned 3
+        3:   65:        if(repo1->numar_oferte_curente < repo1->capacitate/2){
+branch  0 taken 2 (fallthrough)
+branch  1 taken 1
+        2:   66:            redimensionare_in_jos(repo1);
+        2:   66-block  0
+call    0 returned 2
+        -:   67:        }
+        3:   68:        return 0;
+        3:   68-block  0
+        -:   69:    }
+        -:   70:    else{
+        1:   71:        return 1;
+        1:   71-block  0
+        -:   72:    }
+        -:   73:}
+        -:   74:
+function distrugere_lista_oferta called 11 returned 100% blocks executed 100%
+       11:   75:void distrugere_lista_oferta(repo * repo1){
+       26:   76:    for(int i = 0; i <= repo1->numar_oferte_curente-1; i++){
+       11:   76-block  0
+       26:   76-block  1
+branch  0 taken 15
+branch  1 taken 11 (fallthrough)
+       15:   77:        distrugere_oferta(repo1->oferte[i]);
+       15:   77-block  0
+call    0 returned 15
+        -:   78:    }
+       11:   79:    repo1->numar_oferte_curente = 0;
+       11:   80:    free(repo1->oferte);
+       11:   81:}
+        -:   82:
+function modify_oferta called 3 returned 100% blocks executed 100%
+        3:   83:int modify_oferta(repo * repo1, int index, oferta * oferta1){
+        3:   84:    if(index >= 0 && index < repo1->numar_oferte_curente){
+        3:   84-block  0
+branch  0 taken 3 (fallthrough)
+branch  1 taken 0
+        3:   84-block  1
+branch  2 taken 2 (fallthrough)
+branch  3 taken 1
+        2:   85:        copiere_date(repo1->oferte[index] , oferta1);
+        2:   85-block  0
+call    0 returned 2
+        2:   86:        return 0;
+        -:   87:    }
+        -:   88:    else{
+        1:   89:        return 1;
+        1:   89-block  0
+        -:   90:    }
+        -:   91:}
+        -:   92:
+function test_add_delete_oferta called 1 returned 100% blocks executed 74%
+        1:   93:void test_add_delete_oferta(){
+        1:   94:    repo * repo1 = malloc(1*sizeof (repo));
+        1:   95:    creare_repository(repo1);
+        1:   95-block  0
+call    0 returned 1
+       1*:   96:    assert(repo1->numar_oferte_curente == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   96-block  0
+call    2 never executed
+        -:   97:
+        1:   98:    data * data1 = malloc(sizeof (data));
+        1:   99:    creare_data(data1, 12,3,2024);
+        1:   99-block  0
+call    0 returned 1
+        -:  100:
+        1:  101:    oferta * oferta1 = malloc(1*sizeof (oferta)) ;
+        1:  102:    creare_oferta(oferta1, "Munte", "Fagaras", data1, 500);
+call    0 returned 1
+        -:  103:
+        1:  104:    data * data2 = malloc(sizeof (data));
+        1:  105:    creare_data(data2, 12,3,2024);
+call    0 returned 1
+        -:  106:
+        1:  107:    oferta * oferta2 = malloc(1*sizeof (oferta));
+        1:  108:    creare_oferta(oferta2,"Munte", "Fagaras", data2, 500);
+call    0 returned 1
+        -:  109:
+        1:  110:    data * data3 = malloc(sizeof (data));
+        1:  111:    creare_data(data3, 12,3,2024);
+call    0 returned 1
+        -:  112:
+        1:  113:    oferta * oferta3 = malloc(1*sizeof (oferta));
+        1:  114:    creare_oferta(oferta3,"City Break", "Paris", data3, 500);
+call    0 returned 1
+        -:  115:
+        1:  116:    data * data4 = malloc(sizeof (data));
+        1:  117:    creare_data(data4, 12,3,2024);
+call    0 returned 1
+        -:  118:
+        1:  119:    oferta * oferta4 = malloc(1*sizeof (oferta));
+        1:  120:    creare_oferta(oferta4,"Mare", "Costinesti", data4, 500);
+call    0 returned 1
+        -:  121:
+        1:  122:    int status = add_oferta(repo1, oferta1);
+call    0 returned 1
+        1:  123:    int status1 = add_oferta(repo1, oferta2);
+call    0 returned 1
+        1:  124:    distrugere_oferta(oferta2);
+call    0 returned 1
+       1*:  125:    assert(status == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  125-block  0
+call    2 never executed
+       1*:  126:    assert(status1 == 1);
+        1:  126-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  126-block  1
+call    2 never executed
+       1*:  127:    assert(repo1->numar_oferte_curente == 1);
+        1:  127-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  127-block  1
+call    2 never executed
+       1*:  128:    assert(verificare_egalitate(*repo1->oferte[0], *oferta1) == 1);
+        1:  128-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  128-block  1
+call    3 never executed
+        -:  129:
+        1:  130:    add_oferta(repo1, oferta3);
+        1:  130-block  0
+call    0 returned 1
+        1:  131:    add_oferta(repo1, oferta4);
+call    0 returned 1
+        -:  132:
+       1*:  133:    assert(repo1->numar_oferte_curente == 3);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  133-block  0
+call    2 never executed
+       1*:  134:    assert(repo1->capacitate == 4);
+        1:  134-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  134-block  1
+call    2 never executed
+        -:  135:
+        -:  136:
+        1:  137:    int status2 = delete_oferta(repo1, 4);
+        1:  137-block  0
+call    0 returned 1
+       1*:  138:    assert(status2 == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  138-block  0
+call    2 never executed
+        -:  139:
+        1:  140:    status = delete_oferta(repo1, 0);
+        1:  140-block  0
+call    0 returned 1
+        1:  141:    delete_oferta(repo1,0);
+call    0 returned 1
+        -:  142:
+       1*:  143:    assert(status == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  143-block  0
+call    2 never executed
+       1*:  144:    assert(repo1->numar_oferte_curente == 1);
+        1:  144-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  144-block  1
+call    2 never executed
+       1*:  145:    assert(repo1->capacitate == 2);
+        1:  145-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  145-block  1
+call    2 never executed
+        -:  146:
+        -:  147:
+        -:  148:
+        1:  149:    distrugere_repository(repo1);
+        1:  149-block  0
+call    0 returned 1
+        1:  150:}
+        -:  151:
+        -:  152:
+        -:  153:
+function test_modify_oferta called 1 returned 100% blocks executed 83%
+        1:  154:void test_modify_oferta(){
+        1:  155:    repo * repo1 = malloc(sizeof (repo));
+        1:  156:    creare_repository(repo1);
+        1:  156-block  0
+call    0 returned 1
+       1*:  157:    assert(repo1->numar_oferte_curente == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  157-block  0
+call    2 never executed
+        1:  158:    data * data1 = malloc(sizeof(data));
+        1:  159:    creare_data(data1, 12,3,2024);
+        1:  159-block  0
+call    0 returned 1
+        1:  160:    oferta * oferta1 = malloc(1*sizeof (oferta));
+        1:  161:    creare_oferta(oferta1,"munte", "Fagaras", data1, 500);
+call    0 returned 1
+        1:  162:    add_oferta(repo1, oferta1);
+call    0 returned 1
+        -:  163:
+        -:  164:
+        1:  165:    data * data2 = malloc(sizeof(data));
+        1:  166:    creare_data(data2, 20,5,2024);
+call    0 returned 1
+        1:  167:    oferta * oferta2 = malloc(1*sizeof (oferta));
+        1:  168:    creare_oferta(oferta2,"mare", "Costinesti", data2, 300);
+call    0 returned 1
+        -:  169:
+        1:  170:    modify_oferta(repo1, 0, oferta2);
+call    0 returned 1
+       1*:  171:    assert(verificare_egalitate(*repo1->oferte[0], *oferta2) == 1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  171-block  0
+call    3 never executed
+        -:  172:
+        1:  173:    int status = modify_oferta(repo1, 1, oferta2);
+        1:  173-block  0
+call    0 returned 1
+       1*:  174:    assert(status == 1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  174-block  0
+call    2 never executed
+        1:  175:    distrugere_repository(repo1);
+        1:  175-block  0
+call    0 returned 1
+        1:  176:    distrugere_oferta(oferta2);
+call    0 returned 1
+        1:  177:}
+        -:  178:
+function teste_repository called 1 returned 100% blocks executed 100%
+        1:  179:void teste_repository(){
+        1:  180:   test_add_delete_oferta();
+        1:  180-block  0
+call    0 returned 1
+        1:  181:   test_modify_oferta();
+call    0 returned 1
+        1:  182:}
